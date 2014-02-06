@@ -107,7 +107,9 @@ names are also used in Bio.SeqIO and include the following:
                MASE alignment format.
  - nexus     - Output from NEXUS, see also the module Bio.Nexus which can also
                read any phylogenetic trees in these files.
- - phylip    - Used by the PHLIP tools.
+ - phylip    - Interlaced PHYLIP, as used by the PHLIP tools.
+ - phylip-sequential - Sequential PHYLIP.
+ - phylip-relaxed - PHYLIP like format allowing longer names.
  - stockholm - A richly annotated alignment file format used by PFAM.
 
 Note that while Bio.AlignIO can read all the above file formats, it cannot
@@ -148,6 +150,7 @@ import NexusIO
 import PhylipIO
 import EmbossIO
 import FastaIO
+import MafIO
 
 #Convention for format names is "mainname-subtype" in lower case.
 #Please use the same names as BioPerl and EMBOSS where possible.
@@ -157,6 +160,7 @@ _FormatToIterator = {#"fasta" is done via Bio.SeqIO
                      "emboss" : EmbossIO.EmbossIterator,
                      "fasta-m10" : FastaIO.FastaM10Iterator,
                      "nexus" : NexusIO.NexusIterator,
+                     "maf": MafIO.MafIterator,
                      "phylip" : PhylipIO.PhylipIterator,
                      "phylip-sequential" : PhylipIO.SequentialPhylipIterator,
                      "phylip-relaxed" : PhylipIO.RelaxedPhylipIterator,
@@ -166,6 +170,7 @@ _FormatToIterator = {#"fasta" is done via Bio.SeqIO
 _FormatToWriter = {#"fasta" is done via Bio.SeqIO
                    #"emboss" : EmbossIO.EmbossWriter, (unfinished)
                    "nexus" : NexusIO.NexusWriter,
+                   "maf" : MafIO.MafWriter,
                    "phylip" : PhylipIO.PhylipWriter,
                    "phylip-sequential" : PhylipIO.SequentialPhylipWriter,
                    "phylip-relaxed" : PhylipIO.RelaxedPhylipWriter,
